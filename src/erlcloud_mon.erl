@@ -381,6 +381,7 @@ get_metric_statistics(
              end
              || N<-lists:seq(1, length(Dimensions))]
            ),
+    io:format("~p~n", [Params]),
     Doc = mon_query(Config, "GetMetricStatistics", Params),
     Members = xmerl_xpath:string("/GetMetricStatisticsResponse/GetMetricStatisticsResult/Datapoints/member", Doc),
     Label = get_text("Label", hd(xmerl_xpath:string("/GetMetricStatisticsResponse/GetMetricStatisticsResult", Doc))),
