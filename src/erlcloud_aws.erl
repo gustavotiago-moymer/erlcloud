@@ -183,7 +183,7 @@ aws_request4_no_update(Method, Protocol, Host, Port, Path, Params, Service,
                         Headers :: list(), Config :: aws_config()) -> {ok, binary()} | {error, tuple()}.
 aws_request_form(Method, Protocol, Host, Port, Path, Form, Headers, Config) ->
     RequestHeaders = [{"content-type",
-                      "application/x-www-form-urlencoded; charset=utf-8"} |
+                      "application/x-amz-json-1.1; charset=utf-8"} |
                      Headers],
     Scheme = case Protocol of
         undefined -> "https://";
