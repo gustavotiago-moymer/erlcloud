@@ -182,7 +182,7 @@ aws_request4_no_update(Method, Protocol, Host, Port, Path, Params, Service,
                         Port :: undefined | integer() | string(), Path :: string(), Form :: string(),
                         Headers :: list(), Config :: aws_config()) -> {ok, binary()} | {error, tuple()}.
 aws_request_form(Method, Protocol, Host, Port, Path, Form, Headers, Config) ->
-    RequestHeaders = [{"content-type", "application/x-www-form-urlencoded; charset=utf-8"}, {"accept", "application/json"} |
+    RequestHeaders = [{"content-type", "application/x-www-form-urlencoded; charset=utf-8"}|
                      Headers],
     io:format("~p~n", [RequestHeaders]),
     Scheme = case Protocol of
