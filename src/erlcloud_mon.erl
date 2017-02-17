@@ -406,9 +406,6 @@ mon_query(Config, Action, Params) ->
 
 mon_query(Config, Action, Params, ApiVersion) ->
     QParams = [{"Action", Action}, {"Version", ApiVersion}|Params],
-    io:format("~p~n", [Action]),
-    io:format("~p~n", [ApiVersion]),
-    io:format("~p~n", [QParams]),
     case erlcloud_aws:aws_request_xml4(get,
                                  Config#aws_config.mon_protocol,
                                  Config#aws_config.mon_host,
@@ -421,6 +418,7 @@ mon_query(Config, Action, Params, ApiVersion) ->
         {ok, Body} ->
             Body;
         {error, Reason} ->
+            io:format("REASON\n\n\n~p~n", [Reason]),
             erlang:error({aws_error, Reason})
     end.
 
