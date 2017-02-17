@@ -31,7 +31,7 @@
 
 -import(erlcloud_xml, [get_text/2, get_time/2]).
 
--define(XMLNS_MON, "http://monitoring.amazonaws.com/doc/2010-08-01/").
+-define(XMLNS_MON, "https://monitoring.amazonaws.com/doc/2010-08-01/").
 -define(API_VERSION, "2010-08-01").
 
 -define(FMT(Fmt,Args), lists:flatten(io_lib:format((Fmt),(Args)))).
