@@ -233,6 +233,8 @@ aws_request_form_raw(Method, Scheme, Host, Port, Path, Form, Headers, Config) ->
                                           method = M,
                                           request_headers = Headers,
                                           request_body = <<>>},
+                     io:format("REQUEST   ~p~n\n\n",[AwsRequest]),
+                     io:format("URL   ~p~n\n\n",[URL]),
                 erlcloud_retry:request(Config, AwsRequest, ResultFun);
             _ ->
                 AwsRequest = #aws_request{uri = lists:flatten(URL),
