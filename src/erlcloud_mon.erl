@@ -420,7 +420,8 @@ mon_query(Config, Action, Params, ApiVersion) ->
         {ok, Body} ->
             Body;
         {error, Reason} ->
-            erlang:error({aws_error, Reason})
+            {_, Value} = Reason,
+            erlang:error({aws_error, Value})
     end.
 
 configure_host(Host, Port, Protocol) ->
