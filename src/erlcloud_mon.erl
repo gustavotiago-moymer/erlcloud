@@ -159,7 +159,6 @@ put_metric_data(Namespace, MetricData, #aws_config{} = Config) ->
            [ params_metric_data(N,MD) || {N,MD} <- lists:zip(lists:seq(1,length(MetricData)), MetricData) ]
           )
         ],
-          io:format("~p~n", [Params]),
     mon_query(Config, "PutMetricData", Params).
 
 %%------------------------------------------------------------------------------
