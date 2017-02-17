@@ -420,7 +420,8 @@ mon_query(Config, Action, Params, ApiVersion) ->
         {ok, Body} ->
             Body;
         {error, Reason} ->
-            {_, Value} = Reason,
+            {_, X} = Reason,
+            {_, _, _, Value} = X,
             erlang:error({aws_error, Value})
     end.
 
