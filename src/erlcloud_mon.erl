@@ -362,8 +362,7 @@ get_metric_statistics(
            {"StartTime",  format_timestamp(StartTime)},
            {"EndTime",    format_timestamp(EndTime)},
            {"Period",     Period},
-           [{"Unit",      Unit} || Unit=/=undefined, Unit=/=""],
-           {"Output", "json"}
+           [{"Unit",      Unit} || Unit=/=undefined, Unit=/=""]
           ])
           ++
           lists:flatten(
@@ -381,8 +380,7 @@ get_metric_statistics(
                   {?FMT("Dimensions.member.~b.Value", [N]), Value}]
              end
              || N<-lists:seq(1, length(Dimensions))]
-           ),
-    io:format("~p~n", [Params]),    
+           ), 
     Doc = mon_query(Config, "GetMetricStatistics", Params),
     Members = xmerl_xpath:string("/GetMetricStatisticsResponse/GetMetricStatisticsResult/Datapoints/member", Doc),
     Label = get_text("Label", hd(xmerl_xpath:string("/GetMetricStatisticsResponse/GetMetricStatisticsResult", Doc))),
